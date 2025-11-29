@@ -4,15 +4,18 @@ Beats 100.00%
 
 Memory 8.78 MB
 Beats 87.26%
-Overall, everything is good, but there can still be some improvements and I would like to try in Java
+Overall, everything is good, but there can still be some improvements, and I would like to try in Java
 */
 class Solution {
 public:
     bool isValid(string s) {
+        //the declaration of variables
         stack<char> st;
         int wordLength = s.length();
         int i=0;
+        //loop to go through every char
         while(i < wordLength){
+            //if open bracket adds to the stack and if a fitting closing bracket, then it pops the stack, else false 
             if(s[i]=='('||s[i]=='{'||s[i]=='['){st.push(s[i]);}
             else if(s[i]==')'&&st.size()>0){
                 if(st.top()=='('){st.pop();}
@@ -31,6 +34,7 @@ public:
             }
             i++;
         }
+        //to check if anything is still left in the queue, if there is, then not all brackets were closed, so false
         if(st.size()>0){
             return false;
         }
